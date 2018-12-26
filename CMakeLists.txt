@@ -30,9 +30,11 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/Core)
+include_directories(${CMAKE_SOURCE_DIR}/WebEngine)
 include_directories(${CMAKE_SOURCE_DIR}/third-party/includes)
 
 add_subdirectory(Core)
+add_subdirectory(WebEngine)
 
 set(SOURCE_FILES Main.cpp)
 set(CMAKE_CXX_STANDARD 17)

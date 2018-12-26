@@ -12,39 +12,8 @@ include_directories(${CMAKE_SOURCE_DIR}/third-party/includes)
 file(
         GLOB_RECURSE
         SOURCE_FILES
-        3rdparty/*.h
-        3rdparty/*.cpp
-        AdBlock/*.hpp
-        AdBlock/*.cpp
-        Bookmarks/*.cpp
-        Bookmarks/*.hpp
-        Cookies/*.hpp
-        Cookies/*.cpp
-        Database/*.hpp
-        Database/*.cpp
-        Download/*.cpp
-        Download/*.hpp
-        History/*.cpp
-        History/*.hpp
-		MaquetteGrid/*.cpp
-		MaquetteGrid/*.hpp
-        Network/*.cpp
-        Network/*.hpp
-        Password/*.cpp
-        Password/*.hpp
-        Plugins/*.cpp
-        Plugins/*.hpp
-        Utils/*.cpp
-        Utils/*.hpp
-        View/*.cpp
-        View/*.hpp
-        Widgets/*.cpp
-        Widgets/*.hpp
-        Application.cpp
-        Application.hpp
-        BrowserWindow.hpp
-        BrowserWindow.cpp
-	    SharedDefines.hpp
+       *.hpp
+       *.cpp
 )
 
 file(
@@ -53,14 +22,14 @@ file(
         ${CMAKE_SOURCE_DIR}/*.qrc
 )
 
-add_library(SieloCore SHARED ${SOURCE_FILES} ${QRC_FILES} ${QM_FILES})
+add_library(SieloWebEngine SHARED ${SOURCE_FILES} ${QRC_FILES} ${QM_FILES})
 
 set(SIELO_LIBS ${OPENSSL_LIBRARIES} Qt5::Widgets Qt5::WebEngine Qt5::Sql Qt5::WebEngineWidgets)
 if(WIN32)
     set(SIELO_LIBS ${SIELO_LIBS} dwmapi uxtheme)
 endif()
 
-target_link_libraries(SieloCore ${SIELO_LIBS})
+target_link_libraries(SieloWebEngine ${SIELO_LIBS})
 
 if (WIN32)
     # deploy
@@ -68,8 +37,8 @@ if (WIN32)
     get_filename_component(QT5_WINDEPLOYQT_EXECUTABLE ${QT5_QMAKE_EXECUTABLE} PATH)
     set(QT5_WINDEPLOYQT_EXECUTABLE "${QT5_WINDEPLOYQT_EXECUTABLE}/windeployqt.exe")
 
-    add_custom_command(TARGET SieloCore POST_BUILD
-        COMMAND ${QT5_WINDEPLOYQT_EXECUTABLE} --qmldir ${CMAKE_SOURCE_DIR} $<TARGET_FILE_DIR:SieloCore>/SieloCore.dll)
+    add_custom_command(TARGET SieloWebEngine POST_BUILD
+        COMMAND ${QT5_WINDEPLOYQT_EXECUTABLE} --qmldir ${CMAKE_SOURCE_DIR} $<TARGET_FILE_DIR:SieloWebEngine>/SieloWebEngine.dll)
 		file(GLOB OPENSSL_CRYPTO_DLLS "${OPENSSL_DIR}/bin/*.dll")
         file(COPY ${OPENSSL_CRYPTO_DLLS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug)
         file(COPY ${OPENSSL_CRYPTO_DLLS} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Release)
