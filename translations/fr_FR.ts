@@ -11,7 +11,7 @@
     <message>
         <location filename="../Core/Application.cpp" line="1103"/>
         <source>You are starting Sielo after a crash. What would you like to do?</source>
-        <translation>Vous démarrez Sielo après un crash. Que voulez-vous faire ?</translation>
+        <translation>Sielo c'est mal arrêté, souhaitez-vous restaurer la dernière session ?</translation>
     </message>
     <message>
         <location filename="../Core/Application.cpp" line="1105"/>
@@ -192,8 +192,8 @@
     </message>
     <message>
         <location filename="../Core/AdBlock/TreeWidget.cpp" line="211"/>
-        <source>%1 (recently updated</source>
-        <translation>%1 (Récemment mis à jour</translation>
+        <source>%1 (recently updated)</source>
+        <translation>%1 (Récemment mis à jour)</translation>
     </message>
     <message>
         <location filename="../Core/AdBlock/TreeWidget.cpp" line="220"/>
